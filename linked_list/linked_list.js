@@ -63,7 +63,7 @@ class LinkedList {
       let oldTail = this.tail;
       this.tail = new Node(data);
       oldTail.next = this.tail;
-      this.tail.previous = oldTail;
+      this.tail.prev = oldTail;
     }
   }
 
@@ -80,7 +80,7 @@ class LinkedList {
     }
   }
 
-  deleteHead(data) {
+  deleteHead() {
     if (!this.head) {
       return null;
     } else {
@@ -97,7 +97,7 @@ class LinkedList {
     }
   }
 
-  deleteTail(data) {
+  deleteTail() {
     if (!this.tail) {
       return null;
     } else {
@@ -112,7 +112,7 @@ class LinkedList {
         this.tail.next = null;
       }
 
-      removeTail.data;
+      return removeTail.data;
     }
   }
 
@@ -146,4 +146,7 @@ list.prepend(42);
 
 list.search(999);
 
-console.log(list);
+list.deleteHead();
+list.deleteTail();
+
+console.log(list.deleteTail());
