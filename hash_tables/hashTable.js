@@ -73,7 +73,9 @@ const myTable = new HashTable();
 myTable.setItem("firstName", "Zohaib");
 console.log(myTable.table.length);
 myTable.setItem("lastName", "Khan");
+console.log(myTable.table.length);
 myTable.setItem("age", 22);
+console.log(myTable.table.length);
 
 console.log(myTable.getItem("age"));
 
