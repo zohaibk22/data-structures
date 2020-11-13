@@ -37,5 +37,69 @@ function mySet() {
     return collection.length;
   };
 
-  this.union = function () {};
+  this.union = function (otherSet) {
+    let unionSet = new mySet();
+    let firstSet = this.values();
+    let secondSet = otherSet.values();
+
+    firstSet.forEach((e) => {
+      unionSet.add(e);
+    });
+
+    secondSet.forEach((e) => {
+      unionSet.add(e);
+    });
+
+    return unionSet;
+  };
+
+  //this will return the intersection of two sets
+  this.intersection = function (otherSet) {
+    let intersectionSet = new mySet();
+
+    let firstSet = this.values();
+    let secondSet = otherSet.values();
+
+    firstSet.forEach((e) => {
+      if (otherSet.has(e)) {
+        intersectionSet.add(e);
+      }
+    });
+    return intersectionSet;
+  };
+
+  this.difference = function (otherSet) {
+    let differenceSet = new mySet();
+    let firstSet = this.values();
+    let secondSet = otherSet.values();
+
+    firstSet.forEach((e) => {
+      if (!otherSet.has(e)) {
+        differenceSet.add(e);
+      }
+    });
+    return differenceSet;
+  };
+
+  this.subset = function (otherSet) {
+    let firstSet = this.values();
+    // the every meth0d tests whetehr all the elements in array pass the test implemented by the given function
+    return firstSet.every(function (values) {
+      return otherSet.has(values);
+    });
+  };
 }
+
+let setA = new mySet();
+let setB = new mySet();
+
+setA.add("a");
+setB.add("b");
+setB.add("c");
+setB.add("a");
+setB.add("d");
+
+console.log(setA.subset(setB));
+console.log(setA.union(setB).values());
+console.log(setA.intersection(setB).values());
+console.log(setA.difference(setB).values());
